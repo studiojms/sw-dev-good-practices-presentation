@@ -23,11 +23,15 @@
           <br />
           <p>Jefferson Mariano de Souza</p>
         </section>
-        <section data-background="img/alinhamento.jpg" data-background-opacity="0.3">
+        <section data-background="img/alinhamento.jpg" data-background-opacity="0.3" data-background-transition="zoom">
           <h2>Objetivo</h2>
-          <p class="fragment">Alinhamento de abordagem de soluções com base em situações de exemplo</p>
+          <ul>
+            <li class="fragment">Alinhamento arquitetura do sistema</li>
+            <li class="fragment">Situações de exemplo</li>
+            <li class="fragment">Conceitos SOLID</li>
+          </ul>
         </section>
-        <section data-background="img/typewriter.jpg" data-background-opacity="0.1">
+        <section data-background="img/typewriter.jpg" data-background-opacity="0.1" data-background-transition="zoom">
           <h2>Agenda</h2>
           <ul>
             <li>Alinhamento sobre a solução atual</li>
@@ -35,7 +39,7 @@
             <li>Boas práticas</li>
           </ul>
         </section>
-        <section data-background="img/developer.jpg" data-background-opacity="0.3">
+        <section data-background="img/developer.jpg" data-background-opacity="0.3" data-background-transition="zoom">
           <h2>Alinhamento sobre a solução atual</h2>
         </section>
         <section data-background="img/objetivo.jpg" data-background-opacity="0.1">
@@ -49,7 +53,7 @@
           </aside>
         </section>
         <section data-background="img/organizacao.jpg" data-background-opacity="0.2">
-          <h2>Organização</h2>
+          <h3>Organização da Solução</h3>
           <section>
             <ul>
               <li class="fragment">Monolito central (syn4tdf)</li>
@@ -67,11 +71,13 @@
             </aside>
           </section>
           <section>
-            <h3></h3>
+            <img src="img/visao-geral.png" alt="Visão Geral" />
+          </section>
+          <section>
             <img src="img/utilizacao.png" alt="Utilização" />
             <aside class="notes">
               <ul>
-                <li>Utilização</li>
+                <li>Fluxo de Utilização</li>
               </ul>
             </aside>
           </section>
@@ -108,8 +114,14 @@
           <h2>Manipulação de dados</h2>
           <ul>
             <li class="fragment">Aplicação é totalmente dependente de dados</li>
-            <li class="fragment">Transformação de dados é de responsabilidade da camada de banco (calculation view)</li>
+            <li class="fragment">Transformação de dados é de responsabilidade da camada de banco de dados</li>
           </ul>
+          <aside class="notes">
+            <ul>
+              <li>aplicação sem dados não tem muita utilidade</li>
+              <li>lógica de banco concentrada em procedures e calculation views (maior performance)</li>
+            </ul>
+          </aside>
         </section>
         <section data-background="img/apresentacao.jpg" data-background-opacity="0.2">
           <h2>Camada de Apresentação</h2>
@@ -140,8 +152,15 @@
             <ul>
               <li class="fragment">configurações de servidor</li>
               <li class="fragment">mensagem do e-mail</li>
-              <li class="fragment">remetente do e-mail</li>
             </ul>
+            <aside class="notes">
+              <ul>
+                <li>Na mesma tabela, havia dados de configuração e mensagem</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <img src="img/modeling-config-email.png" alt="Tabela com modelagem inconsistente">
           </section>
           <section>
             <img src="img/tabela-com-repeticao.png" alt="Tabela com dados repetidos" />
@@ -172,7 +191,7 @@
           <h2>Compatibilidade</h2>
           <section>
             <p class="fragment grow highlight-red">
-              Situação: Para resolver determinada situação, o ideal é apagar uma coluna da tabela
+              Situação: Para resolver determinada situação, a solução pensada é apagar uma coluna da tabela
             </p>
             <ul>
               <li class="fragment">Apagar coluna? Já existe no ambiente do cliente?</li>
@@ -265,8 +284,14 @@
           </p>
         </section>
         <section data-markdown data-background="img/solid.jpg" data-background-opacity="0.1">
-          |Letra|Princípio|Definição| |-|-|-| |S|Princípio da Responsabilidade Única|Uma classe deve ter um, e somente
-          um, motivo para mudar| Note: Single Responsibility Principle
+          ## Single Responsibility Principle
+
+          |Letra|Princípio|Definição| 
+          |-|-|-| 
+          |S|Princípio da Responsabilidade Única|Uma classe deve ter um, e somente um, motivo para mudar| 
+          
+          Note: 
+          Single Responsibility Principle
         </section>
         <section data-background="img/solid.jpg" data-background-opacity="0.1">
           <h2>Single Responsibility Principle</h2>
@@ -341,9 +366,14 @@ class OrderViewer {
           </section>
         </section>
         <section data-markdown data-background="img/solid.jpg" data-background-opacity="0.1">
-          |Letra|Princípio|Definição| |-|-|-| |O|Princípio Aberto-Fechado|Você deve ser capaz de estender um
-          comportamento de uma classe, sem modificá-lo| Note: Open-Closed Principle Objetos ou entidades devem estar
-          abertos para extensão, mas fechados para modificação
+          ## Open-Closed Principle
+          |Letra|Princípio|Definição| 
+          |-|-|-| 
+          |O|Princípio Aberto-Fechado|Você deve ser capaz de estender um comportamento de uma classe, sem modificá-lo| 
+          
+          Note: 
+          Open-Closed Principle 
+          Objetos ou entidades devem estar abertos para extensão, mas fechados para modificação
         </section>
         <section data-background="img/solid.jpg" data-background-opacity="0.1">
           <h2>Open-Closed Principle</h2>
@@ -379,10 +409,10 @@ class FolhaDePagamento {
             </aside>
           </section>
           <section data-background="img/solid.jpg" data-background-opacity="0.1">
-            <q
-              >Alterar uma classe já existente para adicionar um novo comportamento, corremos um sério risco de
-              introduzir bugs em algo que já estava funcionando.</q
-            >
+            <q>
+              Ao alterar uma classe já existente para adicionar um novo comportamento, corremos um sério risco de
+              introduzir bugs em algo que já estava funcionando.
+            </q>
           </section>
           <section data-background="img/solid.jpg" data-background-opacity="0.1">
             <pre>
@@ -391,7 +421,7 @@ interface Remuneravel {
   public remuneracao(): number;
 }
 
-class ContratoClt implements Remuneravel{
+class ContratoClt implements Remuneravel {
   public remuneracao(): number { /*...*/ }
 }
 
@@ -421,8 +451,15 @@ class FolhaDePagamento {
           </section>
         </section>
         <section data-markdown data-background="img/solid.jpg" data-background-opacity="0.1">
-          |Letra|Princípio|Definição| |-|-|-| |L|Princípio da Substituição de Liskov|As classes base devem ser
-          substituíveis por suas classes derivadas| Note: Liskov Substitution Principle Barbara Liskov
+          ## Liskov Substitution Principle
+
+          |Letra|Princípio|Definição| 
+          |-|-|-| 
+          |L|Princípio da Substituição de Liskov|As classes base devem ser substituíveis por suas classes derivadas| 
+          
+          Note: 
+          Liskov Substitution Principle 
+          Barbara Liskov
         </section>
         <section data-background="img/solid.jpg" data-background-opacity="0.1">
           <h2>Liskov Substitution Principle</h2>
@@ -441,35 +478,40 @@ class FolhaDePagamento {
           </section>
           <section>
             <pre>
-              <code data-line-numbers="2-4|6,8">
+              <code data-line-numbers="2-4|6,8|10">
 public class Passaro {
-  public void voar() {};
+  public voar() {};
 }
 
-public class Pato extends Passaro {}
+public class Pato extends Passaro { /*...*/ }
 
-public class Avestruz extends Passaro{}
+public class Avestruz extends Passaro { 
+  public voar() {
+    throw new Error("Avestruz não voa!");
+  };
+}
               </code>
             </pre>
             <aside class="notes">
               <ul>
                 <li>Polimorfismo</li>
                 <li>Avestruz não voa!</li>
+                <li>Se substituirmos lugares esperando <strong>Avestruz</strong> para usar <strong>Passaro</strong>, há quebra de expectativas</li>
               </ul>
             </aside>
           </section>
           <section>
             <pre>
               <code data-line-numbers="2|4|8|10">
-public class Passaro{};
+public class Passaro {};
 
-public class PassaroVoador extends Passaro{
-  public void voar(){};
+public class PassaroVoador extends Passaro {
+  public voar(){};
 }
 
-public class Pato extends PassaroVoador{}
+public class Pato extends PassaroVoador {}
 
-public class Avestruz extends Passaro{
+public class Avestruz extends Passaro {
   //avestruz não voa!
 }
               </code>
@@ -485,9 +527,15 @@ public class Avestruz extends Passaro{
           </section>
         </section>
         <section data-markdown data-background="img/solid.jpg" data-background-opacity="0.1">
-          |Letra|Princípio|Definição| |-|-|-| |I|Princípio da Segregação da Interface|Muitas interfaces específicas são
-          melhores do que uma interface única| Note: Interface Segregation Principle Uma classe não deve ser forçada a
-          implementar interfaces e métodos que não irão utilizar
+          ## Interface Segregation Principle
+
+          |Letra|Princípio|Definição| 
+          |-|-|-| 
+          |I|Princípio da Segregação da Interface|Muitas interfaces específicas são melhores do que uma interface única| 
+          
+          Note: 
+          Interface Segregation Principle 
+          Uma classe não deve ser forçada a implementar interfaces e métodos que não irão utilizar
         </section>
         <section data-background="img/solid.jpg" data-background-opacity="0.1">
           <h2>Interface Segregation Principle</h2>
@@ -584,8 +632,14 @@ class Pinguim implements Ave {
           </section>
         </section>
         <section data-markdown data-background="img/solid.jpg" data-background-opacity="0.1">
-          |Letra|Princípio|Definição| |-|-|-| |D|Princípio da inversão da dependência|Dependa de abstrações e não de
-          implementações| Note: Dependency Inversion Principle
+          ## Dependency Inversion Principle
+
+          |Letra|Princípio|Definição| 
+          |-|-|-| 
+          |D|Princípio da inversão da dependência|Dependa de abstrações e não de implementações| 
+          
+          Note: 
+          Dependency Inversion Principle
         </section>
         <section data-background="img/solid.jpg" data-background-opacity="0.1">
           <h2>Dependency Inversion Principle</h2>
@@ -665,55 +719,6 @@ class PasswordReminder {
         </section>
       </div>
     </div>
-    <!--
-Boas práticas no desenvolvimento de software
-
-situações de exemplo:
-
-- configuração de servidor de e-mail e mensagem da dirf na mesma tabela
-
-- padrão de nomenclatura de classes (nomes de serviço fora do padrão)
-  - nome de serviço em português, e os serviços foram criados em inglês
-
-- evitar quebrar compatibilidade com o que já existe
-  - vai tratar um chamado e exclui coluna de tabela
-
-- fomentar a cultura do questionamento:
-  - quem eu vou impactar se fizer dessa forma? outros módulos? outros clientes?
-  - existe alternativa que gere menor impacto?
-  - quem usa essa funcionalidade? como usa?
-
-- conversar com o dev responsável antes de iniciar o desenvolvimento
-
-- todos os requisitos são apenas um convite para uma conversa, é necessário alinhar com algum DEV da equipe e validar a ideia da solução
-  - demandas precisam ser amadurecidas
-
-- evitar restringir tabelas existentes
-  - constraints que afetam dados
-    - se tabela existe no ambiente do cliente com determinada config, já há cenários diversos
-  se necessário, validar no código de negócio (Java)
-
-Geralmente nós dizemos:
-- eu me baseei em outro lugar e já estava assim
-
-- copiar código é sempre sinal de algo errado. Impacta refactor, evolução etc. Código nunca deve ser copiado, mas sim ajustado para manter a lógica em um lugar só
-
-
-como é a arquitetura da nossa aplicação?
- - api
- - core
- - tech
- 
- 
-responsabilidades de cada camada do código
- - resource/controller
- - service
- - repository (apenas executar query, quem orquestra é o service)
-
-
- SOLID: https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
-	-->
-
     <script src="dist/reveal.js"></script>
     <script src="plugin/zoom/zoom.js"></script>
     <script src="plugin/notes/notes.js"></script>
@@ -730,6 +735,7 @@ responsabilidades de cada camada do código
         center: true,
         hash: true,
         transition: 'concave', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'zoom',
 
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight],
